@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import Preview from "./components/Preview";
+import "./styles/App.css";
+
+interface InputField {
+  name: string;
+  value: string;
+}
+
+interface Section {
+  title: string;
+  fields: InputField[];
+}
+
+const initialSections: Section[] = [
+  {
+    title: "General Details",
+    fields: [
+      { name: "Name", value: "" },
+      { name: "Email", value: "" },
+      { name: "Phone", value: "" },
+    ],
+  },
+  {
+    title: "Experience",
+    fields: [
+      { name: "Company name", value: "" },
+      { name: "Position title", value: "" },
+      { name: "Description", value: "" },
+      { name: "Date (from - to)", value: "" },
+    ],
+  },
+  {
+    title: "Education",
+    fields: [
+      { name: "School name", value: "" },
+      { name: "Degree, title of study", value: "" },
+      { name: "Graduation Year", value: "" },
+    ],
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [sections, setSections] = useState<Section[]>(initialSections);
+
+  const handleInputChange = (
+    sectionTitle: string,
+    fieldName: string,
+    newValue: string
+  ) => {
+    setSections((prevSections) =>
+      prevSections.map((section) =>
+        section.title === sectionTitle
+          ? {
+              ...section,
+              fields: section.fields.map((field) =>
+                field.name === fieldName ? { ...field, value: newValue } : field
+              ),
+            }
+          : section
+      )
+    );
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Sidebar sections={sections} onInputChange={handleInputChange} />
+      <Preview sections={sections} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
