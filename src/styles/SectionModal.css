@@ -1,0 +1,22 @@
+.SectionModal {
+  border: 2px solid;
+  border-radius: 5px;
+  /* padding: 10px; */
+  & > .sectionHeader {
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & > .modalContent {
+    background-color: white;
+  }
+
+  button {
+    padding: 0;
+    outline: none;
+    /* border: none; */
+    background-color: transparent;
+    /* color: red; */
+  }
+}

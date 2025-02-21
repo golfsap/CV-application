@@ -1,36 +1,33 @@
+import SectionModal from "./SectionModal";
 import InputSection from "./InputSection";
+import { SidebarProps } from "../types";
+import styles from "../styles/Sidebar.module.css";
 
-interface InputField {
-  name: string;
-  value: string;
-}
-
-interface Section {
-  title: string;
-  fields: InputField[];
-}
-
-interface SidebarProps {
-  sections: Section[];
-  onInputChange: (
-    sectionTitle: string,
-    fieldName: string,
-    newValue: string
-  ) => void;
-}
-
-export default function Sidebar({ sections, onInputChange }: SidebarProps) {
+export default function Sidebar({
+  sections,
+  onInputChange,
+  handleExperienceChange,
+  addHandlers,
+}: SidebarProps) {
   return (
-    <div className="sidebar">
+    <div className={styles.sidebar}>
       <h1>CV/resume builder</h1>
-      {sections.map((section) => (
+      <SectionModal title={sections[0].title}>
         <InputSection
-          key={section.title}
-          section={section}
+          section={sections[0]}
           onInputChange={onInputChange}
+          onExperienceChange={handleExperienceChange}
+          handleAddBtn={addHandlers["General Details"]}
         />
-      ))}
-      {/* <InputSection title={"General details"} inputFields={inputFields} /> */}
+      </SectionModal>
+      <SectionModal title={sections[1].title}>
+        <InputSection
+          section={sections[1]}
+          onInputChange={onInputChange}
+          onExperienceChange={handleExperienceChange}
+          handleAddBtn={addHandlers["Experience"]}
+        />
+      </SectionModal>
     </div>
   );
 }

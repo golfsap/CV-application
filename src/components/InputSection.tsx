@@ -1,33 +1,19 @@
-interface InputField {
-  name: string;
-  value: string;
-}
-
-interface Section {
-  title: string;
-  fields: InputField[];
-}
-
-interface InputSectionProps {
-  section: Section;
-  onInputChange: (
-    sectionTitle: string,
-    fieldName: string,
-    newValue: string
-  ) => void;
-}
+// import InputField from "./InputField";
+import Button from "./Button";
+import { InputSectionProps } from "../types";
 
 export default function InputSection({
   section,
   onInputChange,
+  onExperienceChange,
+  handleAddBtn,
 }: InputSectionProps) {
   return (
     <div className={"inputSection"}>
-      <h2>{section.title}</h2>
-      <ul>
-        {section.fields.map((field) => (
-          <li key={field.name}>
-            <label>{field.name} </label>
+      {section.fields &&
+        section.fields.map((field, index) => (
+          <div key={index}>
+            <label>{field.name}</label>
             <input
               type="text"
               value={field.value}
@@ -35,9 +21,80 @@ export default function InputSection({
                 onInputChange(section.title, field.name, e.target.value)
               }
             />
-          </li>
+          </div>
         ))}
-      </ul>
+
+      {section.experiences &&
+        section.experiences.map((experience, index) => (
+          <div key={index} className="experienceContainer">
+            <label>Company</label>
+            <input
+              type="text"
+              value={experience.company}
+              onChange={(e) =>
+                onExperienceChange?.(
+                  section.title,
+                  index,
+                  "company",
+                  e.target.value
+                )
+              }
+            />
+            <div>
+              <label>Position</label>
+              <input
+                type="text"
+                value={experience.position}
+                onChange={(e) =>
+                  onExperienceChange?.(
+                    section.title,
+                    index,
+                    "position",
+                    e.target.value
+                  )
+                }
+              />
+            </div>
+            <label>Description</label>
+            <textarea
+              value={experience.description}
+              onChange={(e) =>
+                onExperienceChange?.(
+                  section.title,
+                  index,
+                  "description",
+                  e.target.value
+                )
+              }
+            />
+            <div>
+              <label>Date Range</label>
+              <input
+                type="text"
+                value={experience.dateRange}
+                onChange={(e) =>
+                  onExperienceChange?.(
+                    section.title,
+                    index,
+                    "dateRange",
+                    e.target.value
+                  )
+                }
+              />
+            </div>
+          </div>
+        ))}
+
+      {section.title === "General Details" || section.title === "Experience" ? (
+        <Button
+          title={
+            section.title === "General Details"
+              ? "Add Subheading"
+              : "Add Experience"
+          }
+          onClick={handleAddBtn}
+        />
+      ) : null}
     </div>
   );
 }
