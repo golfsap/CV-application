@@ -86,9 +86,9 @@ function App() {
     setSections((prevSections) => {
       return prevSections.map((section) => {
         if (section.title === "General Details") {
-          const newFields = [...section.fields];
+          const newFields = [...(section.fields ?? [])];
           const newField = {
-            name: `Subheading ${section.fields.length - 4}`,
+            name: `Subheading ${newFields.length - 4}`,
             value: "",
           };
           newFields.splice(newFields.length - 1, 0, newField);

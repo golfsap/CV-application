@@ -6,7 +6,9 @@ interface PageProps {
 }
 
 export default function Page({ sections }: PageProps) {
-  const generalDetails = sections[0].fields;
+  const generalDetails =
+    sections.find((section) => section.title === "General Details")?.fields ||
+    [];
   const experienceSection =
     sections.find((section) => section.title === "Experience")?.experiences ||
     [];
@@ -16,13 +18,6 @@ export default function Page({ sections }: PageProps) {
     .map((field) => field.value.trim())
     .filter((value) => value !== "")
     .join(" | ");
-
-  const experienceClassMap: Record<string, string> = {
-    "Company name": "company-name",
-    "Position title": "position-title",
-    Description: "description",
-    Date: "date-range",
-  };
 
   return (
     <div className="page">
@@ -47,15 +42,6 @@ export default function Page({ sections }: PageProps) {
                   <p className="description">{experience.description}</p>
                   <p className="date-range">{experience.dateRange}</p>
                 </div>
-
-                // <div
-                //   key={field.name}
-                //   className={`experienceField ${
-                //     experienceClassMap[field.name] || ""
-                //   }`}
-                // >
-                //   {field.value}
-                // </div>
               ))}
             </div>
           )}
