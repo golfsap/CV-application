@@ -47,6 +47,11 @@
     position: relative;
   }
 
+  .formatted-text {
+    white-space: pre-wrap;
+    /* word-wrap: break-word; */
+  }
+
   .company-name,
   .school-name {
     font-weight: 700;
@@ -56,6 +61,7 @@
   .position-title,
   .school-degree {
     font-weight: 500;
+    font-style: italic;
   }
 
   .date-range,

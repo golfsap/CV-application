@@ -1,5 +1,6 @@
 import Button from "./Button";
 import { InputSectionProps } from "../types";
+import "../styles/InputSection.css";
 
 export default function InputSection({
   section,
@@ -8,8 +9,17 @@ export default function InputSection({
   onEducationChange,
   handleAddBtn,
 }: InputSectionProps) {
+  const buttonTitle =
+    section.title === "General Details"
+      ? "Add Subheading"
+      : section.title === "Experience"
+      ? "Add Experience"
+      : section.title === "Education"
+      ? "Add Education"
+      : "Add";
+
   return (
-    <div className={"inputSection"}>
+    <div className="inputSection">
       {section.fields &&
         section.fields.map((field, index) => (
           <div key={index}>
@@ -27,19 +37,21 @@ export default function InputSection({
       {section.experiences &&
         section.experiences.map((experience, index) => (
           <div key={index} className="experienceContainer">
-            <label>Company</label>
-            <input
-              type="text"
-              value={experience.company}
-              onChange={(e) =>
-                onExperienceChange?.(
-                  section.title,
-                  index,
-                  "company",
-                  e.target.value
-                )
-              }
-            />
+            <div>
+              <label>Company</label>
+              <input
+                type="text"
+                value={experience.company}
+                onChange={(e) =>
+                  onExperienceChange?.(
+                    section.title,
+                    index,
+                    "company",
+                    e.target.value
+                  )
+                }
+              />
+            </div>
             <div>
               <label>Position</label>
               <input
@@ -55,18 +67,21 @@ export default function InputSection({
                 }
               />
             </div>
-            <label>Description</label>
-            <textarea
-              value={experience.description}
-              onChange={(e) =>
-                onExperienceChange?.(
-                  section.title,
-                  index,
-                  "description",
-                  e.target.value
-                )
-              }
-            />
+            <div>
+              <label>Description</label>
+              <textarea
+                className="formatted-text"
+                value={experience.description}
+                onChange={(e) =>
+                  onExperienceChange?.(
+                    section.title,
+                    index,
+                    "description",
+                    e.target.value
+                  )
+                }
+              />
+            </div>
             <div>
               <label>Date Range</label>
               <input
@@ -142,16 +157,7 @@ export default function InputSection({
           </div>
         ))}
 
-      {section.title === "General Details" || section.title === "Experience" ? (
-        <Button
-          title={
-            section.title === "General Details"
-              ? "Add Subheading"
-              : "Add Experience"
-          }
-          onClick={handleAddBtn}
-        />
-      ) : null}
+      <Button title={buttonTitle} onClick={handleAddBtn} />
     </div>
   );
 }

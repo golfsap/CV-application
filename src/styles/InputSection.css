@@ -1,0 +1,26 @@
+.inputSection {
+  background-color: white;
+
+  label {
+    font-size: 14px;
+  }
+  input {
+    /* width: 100%; */
+    min-width: 270px;
+    height: 24px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    /* background-color: lightgray; */
+  }
+
+  textarea {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    min-height: 100px;
+    /* height: auto; */
+    width: 100%;
+    overflow: hidden;
+    white-space: pre-wrap;
+    font-family: inherit;
+  }
+}

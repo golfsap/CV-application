@@ -30,7 +30,7 @@ export default function Page({ sections }: PageProps) {
         <div className="subheader">
           <span>{generalDetailsString}</span>
         </div>
-        <div className="summary">
+        <div className="summary formatted-text">
           <p>{generalDetails[generalDetails.length - 1].value}</p>
         </div>
       </div>
@@ -41,12 +41,18 @@ export default function Page({ sections }: PageProps) {
             <div className="experiencesContainer">
               {experienceSection.map((experience, index) => (
                 <div key={index} className="experienceItem">
-                  <p className="company-name">{experience.company}</p>
-                  <p className="position-title">{experience.position}</p>
-                  <p className="experience-description">
+                  <p className="company-name formatted-text">
+                    {experience.company}
+                  </p>
+                  <p className="position-title formatted-text">
+                    {experience.position}
+                  </p>
+                  <p className="experience-description formatted-text">
                     {experience.description}
                   </p>
-                  <p className="date-range">{experience.dateRange}</p>
+                  <p className="date-range formatted-text">
+                    {experience.dateRange}
+                  </p>
                 </div>
               ))}
             </div>
@@ -60,10 +66,16 @@ export default function Page({ sections }: PageProps) {
             <div className="schoolsContainer">
               {educationSection.map((school, index) => (
                 <div key={index} className="schoolItem">
-                  <p className="school-name">{school.school}</p>
-                  <p className="school-degree">{school.degree}</p>
-                  <p className="school-description">{school.description}</p>
-                  <p className="graduation-year">{school.graduationYear}</p>
+                  <p className="school-name formatted-text">{school.school}</p>
+                  <p className="school-degree formatted-text">
+                    {school.degree}
+                  </p>
+                  <p className="school-description formatted-text">
+                    {school.description}
+                  </p>
+                  <p className="graduation-year formatted-text">
+                    {school.graduationYear}
+                  </p>
                 </div>
               ))}
             </div>

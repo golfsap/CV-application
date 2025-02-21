@@ -33,7 +33,7 @@ export default function Sidebar({
           section={sections[2]}
           onInputChange={onInputChange}
           onEducationChange={handleEducationChange}
-          handleAddBtn={() => alert("hello")}
+          handleAddBtn={addHandlers["Education"]}
         />
       </SectionModal>
     </div>

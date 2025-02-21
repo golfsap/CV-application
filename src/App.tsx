@@ -101,6 +101,27 @@ function App() {
     );
   };
 
+  const handleAddEducation = () => {
+    setSections((prevSections) =>
+      prevSections.map((section) =>
+        section.title === "Education"
+          ? {
+              ...section,
+              schools: [
+                ...(section.schools || []),
+                {
+                  school: "",
+                  degree: "",
+                  description: "",
+                  graduationYear: "",
+                },
+              ],
+            }
+          : section
+      )
+    );
+  };
+
   return (
     <>
       <Sidebar
@@ -111,6 +132,7 @@ function App() {
         addHandlers={{
           "General Details": handleAddSubHeading,
           Experience: handleAddWorkExperience,
+          Education: handleAddEducation,
         }}
       />
       <Preview sections={sections} />
