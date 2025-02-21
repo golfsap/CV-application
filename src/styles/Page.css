@@ -20,7 +20,11 @@
     font-size: 18px;
   }
   .subheader {
+    font-weight: 500;
     font-size: 13px;
+  }
+  p {
+    line-height: 1.4;
   }
 
   h2 {
@@ -28,29 +32,34 @@
     margin-top: 5px;
   }
 
-  .experiencesContainer {
+  .experiencesContainer,
+  .schoolsContainer {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
-  .experienceItem {
+  .experienceItem,
+  .schoolItem {
     /* border: 1px solid; */
     display: flex;
     flex-direction: column;
     position: relative;
   }
 
-  .company-name {
+  .company-name,
+  .school-name {
     font-weight: 700;
     /* margin-bottom: -4px; */
   }
 
-  .position-title {
+  .position-title,
+  .school-degree {
     font-weight: 500;
   }
 
-  .date-range {
+  .date-range,
+  .graduation-year {
     position: absolute;
     top: 0;
     right: 0;

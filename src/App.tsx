@@ -1,46 +1,9 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Preview from "./components/Preview";
-import { Experience, Section } from "./types";
+import { Experience, School, Section } from "./types";
+import initialSections from "./data";
 import "./styles/App.css";
-
-const initialSections: Section[] = [
-  {
-    title: "General Details",
-    fields: [
-      { name: "Name", value: "John Doe" },
-      { name: "Email", value: "john.appleseed@icloud.com" },
-      { name: "Phone", value: "(123)-456-7890" },
-      { name: "Location", value: "Bangkok, Thailand" },
-      { name: "Summary", value: "" },
-    ],
-  },
-  {
-    title: "Experience",
-    experiences: [
-      {
-        company: "Google",
-        position: "Software Engineer",
-        description: "Worked on AI and cloud computing",
-        dateRange: "Jan 2026 - Dec 2028",
-      },
-      {
-        company: "Meta",
-        position: "Frontend Developer",
-        description: "Built React applications at scale",
-        dateRange: "Mar 2025 - Dec 2025",
-      },
-    ],
-  },
-  {
-    title: "Education",
-    fields: [
-      { name: "School name", value: "" },
-      { name: "Degree, title of study", value: "" },
-      { name: "Graduation Year", value: "" },
-    ],
-  },
-];
 
 function App() {
   const [sections, setSections] = useState<Section[]>(initialSections);
@@ -76,6 +39,24 @@ function App() {
           const updatedExperiences = [...section.experiences];
           updatedExperiences[index][field] = newValue;
           return { ...section, experiences: updatedExperiences };
+        }
+        return section;
+      })
+    );
+  };
+
+  const handleEducationChange = (
+    sectionTitle: string,
+    index: number,
+    field: keyof School,
+    newValue: string
+  ) => {
+    setSections((prevSection) =>
+      prevSection.map((section) => {
+        if (section.title === sectionTitle && section.schools) {
+          const updatedSchools = [...section.schools];
+          updatedSchools[index][field] = newValue;
+          return { ...section, schools: updatedSchools };
         }
         return section;
       })
@@ -126,6 +107,7 @@ function App() {
         sections={sections}
         onInputChange={handleInputChange}
         handleExperienceChange={handleExperienceChange}
+        handleEducationChange={handleEducationChange}
         addHandlers={{
           "General Details": handleAddSubHeading,
           Experience: handleAddWorkExperience,

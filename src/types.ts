@@ -10,10 +10,18 @@ export interface Experience {
   dateRange: string;
 }
 
+export interface School {
+  school: string;
+  degree: string;
+  description: string;
+  graduationYear: string;
+}
+
 export interface Section {
   title: string;
   fields?: InputField[];
   experiences?: Experience[];
+  schools?: School[];
 }
 
 export interface InputSectionProps {
@@ -23,10 +31,16 @@ export interface InputSectionProps {
     fieldName: string,
     newValue: string
   ) => void;
-  onExperienceChange: (
+  onExperienceChange?: (
     sectionTitle: string,
     index: number,
     field: keyof Experience,
+    newValue: string
+  ) => void;
+  onEducationChange?: (
+    sectionTitle: string,
+    index: number,
+    field: keyof School,
     newValue: string
   ) => void;
   handleAddBtn: () => void;
@@ -43,6 +57,12 @@ export interface SidebarProps {
     sectionTitle: string,
     index: number,
     field: keyof Experience,
+    newValue: string
+  ) => void;
+  handleEducationChange: (
+    sectionTitle: string,
+    index: number,
+    field: keyof School,
     newValue: string
   ) => void;
   addHandlers: { [key: string]: () => void };

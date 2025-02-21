@@ -9,9 +9,13 @@ export default function Page({ sections }: PageProps) {
   const generalDetails =
     sections.find((section) => section.title === "General Details")?.fields ||
     [];
+
   const experienceSection =
     sections.find((section) => section.title === "Experience")?.experiences ||
     [];
+
+  const educationSection =
+    sections.find((section) => section.title === "Education")?.schools || [];
 
   const generalDetailsString = generalDetails
     .slice(1, -1)
@@ -27,7 +31,7 @@ export default function Page({ sections }: PageProps) {
           <span>{generalDetailsString}</span>
         </div>
         <div className="summary">
-          {generalDetails[generalDetails.length - 1].value}
+          <p>{generalDetails[generalDetails.length - 1].value}</p>
         </div>
       </div>
       {experienceSection && (
@@ -39,8 +43,27 @@ export default function Page({ sections }: PageProps) {
                 <div key={index} className="experienceItem">
                   <p className="company-name">{experience.company}</p>
                   <p className="position-title">{experience.position}</p>
-                  <p className="description">{experience.description}</p>
+                  <p className="experience-description">
+                    {experience.description}
+                  </p>
                   <p className="date-range">{experience.dateRange}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      {educationSection && (
+        <div className="education">
+          <h2>Education</h2>
+          {educationSection.length > 0 && (
+            <div className="schoolsContainer">
+              {educationSection.map((school, index) => (
+                <div key={index} className="schoolItem">
+                  <p className="school-name">{school.school}</p>
+                  <p className="school-degree">{school.degree}</p>
+                  <p className="school-description">{school.description}</p>
+                  <p className="graduation-year">{school.graduationYear}</p>
                 </div>
               ))}
             </div>

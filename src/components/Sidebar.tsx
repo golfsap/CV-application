@@ -7,6 +7,7 @@ export default function Sidebar({
   sections,
   onInputChange,
   handleExperienceChange,
+  handleEducationChange,
   addHandlers,
 }: SidebarProps) {
   return (
@@ -16,7 +17,6 @@ export default function Sidebar({
         <InputSection
           section={sections[0]}
           onInputChange={onInputChange}
-          onExperienceChange={handleExperienceChange}
           handleAddBtn={addHandlers["General Details"]}
         />
       </SectionModal>
@@ -26,6 +26,14 @@ export default function Sidebar({
           onInputChange={onInputChange}
           onExperienceChange={handleExperienceChange}
           handleAddBtn={addHandlers["Experience"]}
+        />
+      </SectionModal>
+      <SectionModal title={sections[2].title}>
+        <InputSection
+          section={sections[2]}
+          onInputChange={onInputChange}
+          onEducationChange={handleEducationChange}
+          handleAddBtn={() => alert("hello")}
         />
       </SectionModal>
     </div>

@@ -1,4 +1,3 @@
-// import InputField from "./InputField";
 import Button from "./Button";
 import { InputSectionProps } from "../types";
 
@@ -6,6 +5,7 @@ export default function InputSection({
   section,
   onInputChange,
   onExperienceChange,
+  onEducationChange,
   handleAddBtn,
 }: InputSectionProps) {
   return (
@@ -82,6 +82,63 @@ export default function InputSection({
                 }
               />
             </div>
+          </div>
+        ))}
+
+      {section.schools &&
+        section.schools.map((school, index) => (
+          <div key={index} className="schoolContainer">
+            <label>School name</label>
+            <input
+              type="text"
+              value={school.school}
+              onChange={(e) =>
+                onEducationChange?.(
+                  section.title,
+                  index,
+                  "school",
+                  e.target.value
+                )
+              }
+            />
+            <label>Degree</label>
+            <input
+              type="text"
+              value={school.degree}
+              onChange={(e) =>
+                onEducationChange?.(
+                  section.title,
+                  index,
+                  "degree",
+                  e.target.value
+                )
+              }
+            />
+            <label>Description</label>
+            <textarea
+              value={school.description}
+              onChange={(e) =>
+                onEducationChange?.(
+                  section.title,
+                  index,
+                  "description",
+                  e.target.value
+                )
+              }
+            />
+            <label>Graduation Year</label>
+            <input
+              type="text"
+              value={school.graduationYear}
+              onChange={(e) =>
+                onEducationChange?.(
+                  section.title,
+                  index,
+                  "graduationYear",
+                  e.target.value
+                )
+              }
+            />
           </div>
         ))}
 
