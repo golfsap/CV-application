@@ -2,16 +2,6 @@ import Page from "./Page";
 import { Section } from "../types";
 import "../styles/Preview.css";
 
-// interface InputField {
-//   name: string;
-//   value: string;
-// }
-
-// interface Section {
-//   title: string;
-//   fields: InputField[];
-// }
-
 interface PreviewProps {
   sections: Section[];
 }

@@ -1,7 +1,8 @@
 import SectionModal from "./SectionModal";
 import InputSection from "./InputSection";
 import { SidebarProps } from "../types";
-import styles from "../styles/Sidebar.module.css";
+import "../styles/Sidebar.css";
+import Button from "./Button";
 
 export default function Sidebar({
   sections,
@@ -11,7 +12,7 @@ export default function Sidebar({
   addHandlers,
 }: SidebarProps) {
   return (
-    <div className={styles.sidebar}>
+    <div className="sidebar">
       <h1>CV/resume builder</h1>
       <SectionModal title={sections[0].title}>
         <InputSection
@@ -36,6 +37,7 @@ export default function Sidebar({
           handleAddBtn={addHandlers["Education"]}
         />
       </SectionModal>
+      <Button title="Add Section" onClick={() => alert("Add section!")} />
     </div>
   );
 }

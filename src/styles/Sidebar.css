@@ -1,0 +1,16 @@
+.sidebar {
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  & > h1 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 5px;
+  }
+}
+
+li {
+  list-style: none;
+}

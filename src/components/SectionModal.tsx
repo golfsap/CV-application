@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
 import "../styles/SectionModal.css";
+import { ChevronDown } from "lucide-react";
 
 interface SectionModalProps {
   title: string;
@@ -14,11 +15,15 @@ export default function SectionModal({ title, children }: SectionModalProps) {
 
   return (
     <section className="SectionModal">
-      <div className="sectionHeader">
+      <div className="sectionHeader" onClick={handleBtnClick}>
         <h2>{title}</h2>
-        <button onClick={handleBtnClick}>{showModal ? "close" : "open"}</button>
+        <button onClick={handleBtnClick}>
+          <ChevronDown className={showModal ? "icon rotated" : "icon"} />
+        </button>
       </div>
-      {showModal && <div className="modalContent">{children}</div>}
+      <div className={`modalContent ${showModal ? "open" : ""}`}>
+        {children}
+      </div>
     </section>
   );
 }

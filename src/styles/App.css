@@ -1,9 +1,9 @@
 #root {
-  /* max-width: 1280px; */
+  max-width: 100vw;
+  /* width: 100%; */
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 1.5fr 3fr;
-  /* height: 100vh; */
-  /* width: 100vw; */
+  grid-template-columns: 2fr 5fr;
+  /* overflow-x: hidden; */
 }

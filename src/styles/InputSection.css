@@ -1,26 +1,47 @@
 .inputSection {
   background-color: white;
-
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 7px;
+  padding-top: 4px;
   label {
     font-size: 14px;
+    font-weight: 500;
+    padding-left: 4px;
   }
+
+  .inputField {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   input {
-    /* width: 100%; */
     min-width: 270px;
-    height: 24px;
+    height: 27px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    /* background-color: lightgray; */
+    padding: 0 4px;
   }
 
   textarea {
     border: 1px solid lightgray;
     border-radius: 5px;
     min-height: 100px;
-    /* height: auto; */
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto;
     white-space: pre-wrap;
     font-family: inherit;
+    padding: 0 4px;
+  }
+
+  .experienceContainer,
+  .schoolContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: 2px solid #185358c2;
+    padding-bottom: 7px;
   }
 }
