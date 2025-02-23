@@ -5,8 +5,6 @@ import "../styles/InputSection.css";
 export default function InputSection({
   section,
   onInputChange,
-  onExperienceChange,
-  onEducationChange,
   handleAddBtn,
 }: InputSectionProps) {
   const buttonTitle =
@@ -28,7 +26,7 @@ export default function InputSection({
               type="text"
               value={field.value}
               onChange={(e) =>
-                onInputChange(section.title, field.name, e.target.value)
+                onInputChange(section.title, 0, field.name, e.target.value)
               }
             />
           </div>
@@ -43,12 +41,7 @@ export default function InputSection({
                 type="text"
                 value={experience.company}
                 onChange={(e) =>
-                  onExperienceChange?.(
-                    section.title,
-                    index,
-                    "company",
-                    e.target.value
-                  )
+                  onInputChange(section.title, index, "company", e.target.value)
                 }
               />
             </div>
@@ -58,7 +51,7 @@ export default function InputSection({
                 type="text"
                 value={experience.position}
                 onChange={(e) =>
-                  onExperienceChange?.(
+                  onInputChange(
                     section.title,
                     index,
                     "position",
@@ -73,7 +66,7 @@ export default function InputSection({
                 className="formatted-text"
                 value={experience.description}
                 onChange={(e) =>
-                  onExperienceChange?.(
+                  onInputChange(
                     section.title,
                     index,
                     "description",
@@ -88,7 +81,7 @@ export default function InputSection({
                 type="text"
                 value={experience.dateRange}
                 onChange={(e) =>
-                  onExperienceChange?.(
+                  onInputChange(
                     section.title,
                     index,
                     "dateRange",
@@ -109,12 +102,7 @@ export default function InputSection({
                 type="text"
                 value={school.school}
                 onChange={(e) =>
-                  onEducationChange?.(
-                    section.title,
-                    index,
-                    "school",
-                    e.target.value
-                  )
+                  onInputChange(section.title, index, "school", e.target.value)
                 }
               />
             </div>
@@ -124,12 +112,7 @@ export default function InputSection({
                 type="text"
                 value={school.degree}
                 onChange={(e) =>
-                  onEducationChange?.(
-                    section.title,
-                    index,
-                    "degree",
-                    e.target.value
-                  )
+                  onInputChange(section.title, index, "degree", e.target.value)
                 }
               />
             </div>
@@ -138,7 +121,7 @@ export default function InputSection({
               <textarea
                 value={school.description}
                 onChange={(e) =>
-                  onEducationChange?.(
+                  onInputChange(
                     section.title,
                     index,
                     "description",
@@ -153,7 +136,7 @@ export default function InputSection({
                 type="text"
                 value={school.graduationYear}
                 onChange={(e) =>
-                  onEducationChange?.(
+                  onInputChange(
                     section.title,
                     index,
                     "graduationYear",

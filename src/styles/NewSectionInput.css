@@ -1,0 +1,41 @@
+form {
+  display: flex;
+  padding: 5px 7px;
+
+  & > .btn {
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    padding: 0;
+    color: inherit;
+
+    font-size: 1.5em;
+    font-weight: 300;
+    margin-right: 0.25em;
+  }
+
+  & > .btn:hover {
+    opacity: 0.7;
+  }
+
+  .newSectionInput {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid;
+    font-size: 16px;
+    /* font-weight: 400; */
+    outline: none;
+    transition: border-bottom 150ms ease-in;
+    order: 2;
+    width: 100%;
+  }
+
+  .newSectionInput:focus {
+    border-bottom-width: 3px;
+  }
+
+  .newSectionInput:focus::placeholder {
+    opacity: 0.2;
+  }
+}

@@ -17,30 +17,26 @@ export interface School {
   graduationYear: string;
 }
 
+export interface Subsection {
+  heading: string;
+  subheading: string;
+  description: string;
+}
+
 export interface Section {
   title: string;
   fields?: InputField[];
   experiences?: Experience[];
   schools?: School[];
+  subsections?: Subsection[];
 }
 
 export interface InputSectionProps {
   section: Section;
   onInputChange: (
     sectionTitle: string,
-    fieldName: string,
-    newValue: string
-  ) => void;
-  onExperienceChange?: (
-    sectionTitle: string,
     index: number,
-    field: keyof Experience,
-    newValue: string
-  ) => void;
-  onEducationChange?: (
-    sectionTitle: string,
-    index: number,
-    field: keyof School,
+    field: string,
     newValue: string
   ) => void;
   handleAddBtn: () => void;
@@ -50,20 +46,9 @@ export interface SidebarProps {
   sections: Section[];
   onInputChange: (
     sectionTitle: string,
-    fieldName: string,
-    newValue: string
-  ) => void;
-  handleExperienceChange: (
-    sectionTitle: string,
     index: number,
-    field: keyof Experience,
+    field: string,
     newValue: string
   ) => void;
-  handleEducationChange: (
-    sectionTitle: string,
-    index: number,
-    field: keyof School,
-    newValue: string
-  ) => void;
-  addHandlers: { [key: string]: () => void };
+  addHandlers: { [key: string]: (sectionTitle?: string) => void };
 }
