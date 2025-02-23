@@ -148,6 +148,24 @@ export default function InputSection({
           </div>
         ))}
 
+      {section.subsections &&
+        section.subsections.map((subsection, index) => (
+          <div key={index} className={`${section.title}Container`}>
+            <div className="inputField">
+              <label>Heading</label>
+              <input type="text" value={subsection.heading} />
+            </div>
+            <div className="inputField">
+              <label>Sub Heading</label>
+              <input type="text" value={subsection.subheading} />
+            </div>
+            <div className="inputField">
+              <label>Description</label>
+              <textarea value={subsection.description} />
+            </div>
+          </div>
+        ))}
+
       <Button title={buttonTitle} onClick={handleAddBtn} />
     </div>
   );
