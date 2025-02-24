@@ -17,6 +17,17 @@
     gap: 2px;
   }
 
+  .sectionButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    & > :not(:first-child) {
+      border-color: #ce0000;
+      color: #ce0000;
+    }
+  }
+
   input {
     min-width: 270px;
     height: 27px;
@@ -37,7 +48,8 @@
   }
 
   .experienceContainer,
-  .schoolContainer {
+  .schoolContainer,
+  .genericContainer {
     display: flex;
     flex-direction: column;
     gap: 5px;

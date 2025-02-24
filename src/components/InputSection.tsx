@@ -6,6 +6,7 @@ export default function InputSection({
   section,
   onInputChange,
   handleAddBtn,
+  deleteSection,
 }: InputSectionProps) {
   const buttonTitle =
     section.title === "General Details"
@@ -14,7 +15,7 @@ export default function InputSection({
       ? "Add Experience"
       : section.title === "Education"
       ? "Add Education"
-      : "Add";
+      : "Add Subsection";
 
   return (
     <div className="inputSection">
@@ -150,23 +151,66 @@ export default function InputSection({
 
       {section.subsections &&
         section.subsections.map((subsection, index) => (
-          <div key={index} className={`${section.title}Container`}>
+          <div key={index} className={`genericContainer`}>
             <div className="inputField">
               <label>Heading</label>
-              <input type="text" value={subsection.heading} />
+              <input
+                type="text"
+                value={subsection.heading}
+                onChange={(e) =>
+                  onInputChange(section.title, index, "heading", e.target.value)
+                }
+              />
             </div>
             <div className="inputField">
               <label>Sub Heading</label>
-              <input type="text" value={subsection.subheading} />
+              <input
+                type="text"
+                value={subsection.subheading}
+                onChange={(e) =>
+                  onInputChange(
+                    section.title,
+                    index,
+                    "subheading",
+                    e.target.value
+                  )
+                }
+              />
             </div>
             <div className="inputField">
               <label>Description</label>
-              <textarea value={subsection.description} />
+              <textarea
+                value={subsection.description}
+                onChange={(e) =>
+                  onInputChange(
+                    section.title,
+                    index,
+                    "description",
+                    e.target.value
+                  )
+                }
+              />
+            </div>
+            <div className="inputField">
+              <label>Date</label>
+              <input
+                type="text"
+                value={subsection.date}
+                onChange={(e) =>
+                  onInputChange(section.title, index, "date", e.target.value)
+                }
+              />
             </div>
           </div>
         ))}
 
-      <Button title={buttonTitle} onClick={handleAddBtn} />
+      <div className="sectionButtons">
+        <Button title={buttonTitle} onClick={handleAddBtn} />
+        <Button
+          title="Delete Section"
+          onClick={() => deleteSection(section.title)}
+        />
+      </div>
     </div>
   );
 }

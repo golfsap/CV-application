@@ -21,6 +21,7 @@ export interface Subsection {
   heading: string;
   subheading: string;
   description: string;
+  date: string;
 }
 
 export interface Section {
@@ -29,6 +30,7 @@ export interface Section {
   experiences?: Experience[];
   schools?: School[];
   subsections?: Subsection[];
+  isUserCreated?: boolean;
 }
 
 export interface InputSectionProps {
@@ -40,6 +42,7 @@ export interface InputSectionProps {
     newValue: string
   ) => void;
   handleAddBtn: () => void;
+  deleteSection: (sectionTitle: string) => void;
 }
 
 export interface SidebarProps {
@@ -51,4 +54,5 @@ export interface SidebarProps {
     newValue: string
   ) => void;
   addHandlers: { [key: string]: (sectionTitle?: string) => void };
+  deleteSection: (sectionTitle: string) => void;
 }

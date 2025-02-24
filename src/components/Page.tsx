@@ -11,11 +11,12 @@ export default function Page({ sections }: PageProps) {
     [];
 
   const experienceSection =
-    sections.find((section) => section.title === "Experience")?.experiences ||
-    [];
+    sections.find((section) => section.experiences)?.experiences || [];
 
   const educationSection =
     sections.find((section) => section.title === "Education")?.schools || [];
+
+  const genericSections = sections.filter((section) => section.subsections);
 
   const generalDetailsString = generalDetails
     .slice(1, -1)
@@ -34,7 +35,7 @@ export default function Page({ sections }: PageProps) {
           <p>{generalDetails[generalDetails.length - 1].value}</p>
         </div>
       </div>
-      {experienceSection && (
+      {experienceSection.length > 0 && (
         <div className="experience">
           <h2>Experience</h2>
           {experienceSection.length > 0 && (
@@ -59,7 +60,7 @@ export default function Page({ sections }: PageProps) {
           )}
         </div>
       )}
-      {educationSection && (
+      {educationSection.length > 0 && (
         <div className="education">
           <h2>Education</h2>
           {educationSection.length > 0 && (
@@ -82,6 +83,27 @@ export default function Page({ sections }: PageProps) {
           )}
         </div>
       )}
+      {genericSections.map((section, idx) => (
+        <div key={idx} className={`${section.title.replace(/\s+/g, "-")}`}>
+          <h2>{section.title}</h2>
+          {(section.subsections ?? []).length > 0 && (
+            <div className="genericContainer">
+              {section.subsections?.map((subsection, index) => (
+                <div key={index} className="genericItem">
+                  <p className="heading formatted-text">{subsection.heading}</p>
+                  <p className="subheading formatted-text">
+                    {subsection.subheading}
+                  </p>
+                  <p className="generic-description formatted-text">
+                    {subsection.description}
+                  </p>
+                  <p className="date formatted-text">{subsection.date}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 }

@@ -33,14 +33,16 @@
   }
 
   .experiencesContainer,
-  .schoolsContainer {
+  .schoolsContainer,
+  .genericContainer {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
   .experienceItem,
-  .schoolItem {
+  .schoolItem,
+  .genericItem {
     /* border: 1px solid; */
     display: flex;
     flex-direction: column;
@@ -53,19 +55,22 @@
   }
 
   .company-name,
-  .school-name {
+  .school-name,
+  .heading {
     font-weight: 700;
     /* margin-bottom: -4px; */
   }
 
   .position-title,
-  .school-degree {
+  .school-degree,
+  .subheading {
     font-weight: 500;
     font-style: italic;
   }
 
   .date-range,
-  .graduation-year {
+  .graduation-year,
+  .date {
     position: absolute;
     top: 0;
     right: 0;

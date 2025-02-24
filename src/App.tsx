@@ -18,28 +18,37 @@ function App() {
       prevSections.map((section) => {
         if (section.title !== sectionTitle) return section;
 
-        if (section.title === "Experience" && section.experiences) {
+        if (section.experiences) {
           return {
             ...section,
-            experiences: section.experiences?.map((exp, i) =>
+            experiences: section.experiences.map((exp, i) =>
               i === index ? { ...exp, [field]: newValue } : exp
             ),
           };
         }
-        if (section.title === "Education" && section.schools) {
+        if (section.schools) {
           return {
             ...section,
-            schools: section.schools?.map((sch, i) =>
+            schools: section.schools.map((sch, i) =>
               i === index ? { ...sch, [field]: newValue } : sch
             ),
           };
         }
 
-        if (section.title === "General Details" && section.fields) {
+        if (section.fields) {
           return {
             ...section,
-            fields: section.fields?.map((f) =>
+            fields: section.fields.map((f) =>
               f.name === field ? { ...f, value: newValue } : f
+            ),
+          };
+        }
+
+        if (section.subsections) {
+          return {
+            ...section,
+            subsections: section.subsections.map((sub, i) =>
+              i === index ? { ...sub, [field]: newValue } : sub
             ),
           };
         }
@@ -165,6 +174,11 @@ function App() {
 
   const handleAddSectionModal = (sectionTitle?: string) => {
     if (!sectionTitle) return;
+    if (sections.some((section) => section.title === sectionTitle)) {
+      alert(`${sectionTitle} section already exists`);
+      return;
+    }
+
     setSections((prevSections) => [
       ...prevSections,
       {
@@ -174,10 +188,44 @@ function App() {
             heading: "",
             subheading: "",
             description: "",
+            date: "",
           },
         ],
+        isUserCreated: true,
       },
     ]);
+  };
+
+  const handleAddSubsection = (sectionTitle?: string) => {
+    setSections((prevSection) =>
+      prevSection.map((section) =>
+        section.title === sectionTitle
+          ? {
+              ...section,
+              subsections: [
+                ...(section.subsections || []),
+                {
+                  heading: "",
+                  subheading: "",
+                  description: "",
+                  date: "",
+                },
+              ],
+            }
+          : section
+      )
+    );
+  };
+
+  const handleDeleteSection = (sectionTitle: string) => {
+    if (sectionTitle === "General Details") {
+      alert("The 'General Details' section cannot be deleted");
+      return;
+    }
+
+    setSections((prevSections) =>
+      prevSections.filter((section) => section.title !== sectionTitle)
+    );
   };
 
   return (
@@ -190,7 +238,9 @@ function App() {
           Experience: handleAddWorkExperience,
           Education: handleAddEducation,
           SectionModal: handleAddSectionModal,
+          Subsection: handleAddSubsection,
         }}
+        deleteSection={handleDeleteSection}
       />
       <Preview sections={sections} />
     </>
