@@ -206,10 +206,12 @@ export default function InputSection({
 
       <div className="sectionButtons">
         <Button title={buttonTitle} onClick={handleAddBtn} />
-        <Button
-          title="Delete Section"
-          onClick={() => deleteSection(section.title)}
-        />
+        {section.title !== "General Details" && (
+          <Button
+            title="Delete Section"
+            onClick={() => deleteSection(section.title)}
+          />
+        )}
       </div>
     </div>
   );
