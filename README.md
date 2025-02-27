@@ -4,6 +4,8 @@
 
 This project is a **CV/Resume Builder** that allows users to create, edit, and download their professional resumes. Users can dynamically add, edit, and delete sections such as Experience, Education, and custom sections. The resume preview updates in real-time and can be exported as a **PDF.**
 
+[Live Demo](https://fabulous-parfait-f9a6aa.netlify.app)
+
 ## Features
 
 - **Dynamic Section Management:** Add, edit, and delete sections, including user-created sections.
