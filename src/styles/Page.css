@@ -2,12 +2,11 @@
 
 .page {
   font-family: "EB Garamond", serif;
-  border: 1px solid;
   width: 595.28px;
   height: 841.89px;
-  margin-bottom: 20px;
   padding: 22px;
   font-size: 12px;
+  background-color: white;
 
   & > .header {
     display: flex;
@@ -43,7 +42,6 @@
   .experienceItem,
   .schoolItem,
   .genericItem {
-    /* border: 1px solid; */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -51,7 +49,6 @@
 
   .formatted-text {
     white-space: pre-wrap;
-    /* word-wrap: break-word; */
   }
 
   .company-name,

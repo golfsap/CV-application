@@ -1,13 +1,35 @@
 .preview {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   padding: 20px;
+  background-color: #f3f4f6;
 
-  & > h2 {
-    font-size: 16px;
-    font-weight: 200;
-    margin: 5px;
+  .previewHeader {
+    display: flex;
+    width: 595.28px;
+    align-items: center;
+    justify-content: space-between;
+
+    & > h2 {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 5px;
+      margin-left: 0;
+    }
+
+    & > button {
+      margin-top: 0;
+      margin-bottom: 5px;
+      /* background-color: white; */
+    }
+
+    & > button:hover {
+      background-color: white;
+    }
+  }
+  .pageWrapper {
+    border: 1px solid #cfcbcb;
+    margin-bottom: 20px;
   }
 }

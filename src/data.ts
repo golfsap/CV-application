@@ -6,8 +6,8 @@ const initialSections: Section[] = [
     fields: [
       { name: "Name", value: "Jobby McJobface" },
       { name: "Email", value: "hey@there.com" },
-      { name: "Phone", value: "(555) 555-5555" },
-      { name: "Location", value: "NYC, United States" },
+      { name: "Phone", value: "(123) 456-7890" },
+      { name: "Location", value: "NYC, NY" },
       { name: "Summary", value: "Add an optional summary here" },
     ],
   },

@@ -34,7 +34,6 @@ function App() {
             ),
           };
         }
-
         if (section.fields) {
           return {
             ...section,
@@ -43,7 +42,6 @@ function App() {
             ),
           };
         }
-
         if (section.subsections) {
           return {
             ...section,
@@ -52,66 +50,10 @@ function App() {
             ),
           };
         }
-
         return section;
       })
     );
   };
-
-  // const handleInputChange = (
-  //   sectionTitle: string,
-  //   fieldName: string,
-  //   newValue: string
-  // ) => {
-  //   setSections((prevSections) =>
-  //     prevSections.map((section) =>
-  //       section.title === sectionTitle
-  //         ? {
-  //             ...section,
-  //             fields: section.fields?.map((field) =>
-  //               field.name === fieldName ? { ...field, value: newValue } : field
-  //             ),
-  //           }
-  //         : section
-  //     )
-  //   );
-  // };
-
-  // const handleExperienceChange = (
-  //   sectionTitle: string,
-  //   index: number,
-  //   field: keyof Experience,
-  //   newValue: string
-  // ) => {
-  //   setSections((prevSection) =>
-  //     prevSection.map((section) => {
-  //       if (section.title === sectionTitle && section.experiences) {
-  //         const updatedExperiences = [...section.experiences];
-  //         updatedExperiences[index][field] = newValue;
-  //         return { ...section, experiences: updatedExperiences };
-  //       }
-  //       return section;
-  //     })
-  //   );
-  // };
-
-  // const handleEducationChange = (
-  //   sectionTitle: string,
-  //   index: number,
-  //   field: keyof School,
-  //   newValue: string
-  // ) => {
-  //   setSections((prevSection) =>
-  //     prevSection.map((section) => {
-  //       if (section.title === sectionTitle && section.schools) {
-  //         const updatedSchools = [...section.schools];
-  //         updatedSchools[index][field] = newValue;
-  //         return { ...section, schools: updatedSchools };
-  //       }
-  //       return section;
-  //     })
-  //   );
-  // };
 
   const handleAddSubHeading = () => {
     setSections((prevSections) => {
@@ -185,6 +127,7 @@ function App() {
         title: sectionTitle,
         subsections: [
           {
+            // id: crypto.randomUUID(),
             heading: "",
             subheading: "",
             description: "",
@@ -205,6 +148,7 @@ function App() {
               subsections: [
                 ...(section.subsections || []),
                 {
+                  // id: crypto.randomUUID(),
                   heading: "",
                   subheading: "",
                   description: "",

@@ -1,6 +1,8 @@
 import Page from "./Page";
 import { Section } from "../types";
+import Button from "./Button";
 import "../styles/Preview.css";
+import downloadPDF from "../helpers";
 
 interface PreviewProps {
   sections: Section[];
@@ -9,20 +11,13 @@ interface PreviewProps {
 export default function Preview({ sections }: PreviewProps) {
   return (
     <div className="preview">
-      <h2>Preview</h2>
-      <Page sections={sections} />
-      {/* {sections.map((section) => (
-        <div key={section.title} className="preview-section">
-          <h3>{section.title}</h3>
-          <ul>
-            {section.fields.map((field) => (
-              <li key={field.name}>
-                <strong>{field.name}:</strong> {field.value}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))} */}
+      <div className="previewHeader">
+        <h2>Preview</h2>
+        <Button title="Download PDF" onClick={downloadPDF} />
+      </div>
+      <div className="pageWrapper">
+        <Page sections={sections} />
+      </div>
     </div>
   );
 }
