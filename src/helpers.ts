@@ -2,13 +2,13 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const downloadPDF = () => {
-  const element = document.querySelector(".page");
+  const element = document.querySelector(".page") as HTMLElement;
   if (!element) {
     console.error("Page element not found");
     return;
   }
 
-  html2canvas(element, { scale: 3 }).then((canvas) => {
+  html2canvas(element, { scale: 4 }).then((canvas) => {
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF({
       orientation: "p",
